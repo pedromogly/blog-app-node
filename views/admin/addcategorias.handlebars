@@ -1,0 +1,12 @@
+{{#each erros}}
+    <div>EITA DEU RUIM {{text}}</div>
+{{else}}
+    <div>deu bom</div>
+{{/each}}
+<form action="/admin/categorias/nova" method="POST">
+    <label for="nome">Nome: </label>
+    <input type="text" id="nome" name='nome' placeholder="Nome da categoria">
+    <label for="slug">Slug: </label>
+    <input type="text" id="slug" name="slug" placeholder="Slug da categoria">
+    <button type="submit" class="">Criar categoria</button>
+</form>
