@@ -1,12 +1,19 @@
-{{#each erros}}
-    <div>EITA DEU RUIM {{text}}</div>
-{{else}}
-    <div>deu bom</div>
-{{/each}}
-<form action="/admin/categorias/nova" method="POST">
-    <label for="nome">Nome: </label>
-    <input type="text" id="nome" name='nome' placeholder="Nome da categoria">
-    <label for="slug">Slug: </label>
-    <input type="text" id="slug" name="slug" placeholder="Slug da categoria">
-    <button type="submit" class="">Criar categoria</button>
-</form>
+<div class="mx-8">
+    {{#each erros}}
+        <div>EITA DEU RUIM {{text}}</div>
+    {{else}}
+
+    {{/each}}
+
+    <br/>
+    <form action="/admin/categorias/nova" method="POST" class="flex flex-col">
+        <label for="nome">Nome: </label>
+        <input type="text" id="nome" name='nome' placeholder="Nome da categoria">
+        <label for="slug">Slug: </label>
+        <input type="text" id="slug" name="slug" placeholder="Slug da categoria">
+        <br/>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Criar categoria</button>
+    </form>
+    <br/>
+    <a href="/admin/categorias"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Voltar</button></a>
+</div>

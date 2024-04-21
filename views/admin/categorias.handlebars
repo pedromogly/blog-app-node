@@ -1,3 +1,20 @@
-<h2>Lista de Categorias: </h2>
-<hr>
-<a href="/admin/categorias/add"><button>Listar Categorias</button></a>
+<div class="mx-8">
+    <br/>
+    <a href="/admin/categorias/add"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Listar Categorias</button></a>
+    <br/>
+    <h2>Lista de Categorias: </h2>
+    <hr><br/>
+
+    {{#each categorias}}
+        <div>
+            <h2>Categoria: {{nome}}</h2>
+            <h4>SLUG: {{slug}}</h4>
+            <small>Criado em: {{date}}</small>
+            <hr>
+            <br/>
+        </div>
+    {{else}}
+
+    {{/each}}
+
+</div>
