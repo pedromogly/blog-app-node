@@ -19,10 +19,10 @@ router.get('/categorias/add', (req,res)=>{
 })
 router.get('/categorias',(req,res)=>{
     //usar find com lean para retornar objetos simples pois o bd do mongo é pesado
-    Categoria.find().lean().then((categorias)=>{
+    Categoria.find().lean().sort({date: 'desc'}).then((categorias)=>{
         res.render('admin/categorias', {categorias: categorias})
     }).catch((err)=>{
-        req.flash('error_msg', err)
+        req.flash('error_msg', `${err}`)
         res.redirect('/admin')
     })
     
@@ -61,6 +61,32 @@ router.post('/categorias/nova', (req,res)=>{
             res.render('admin/addcategorias', {err: err})
         })
     }
+})
+
+router.get('/categorias/edit/:id', (req,res)=>{
+    Categoria.findOne({_id:req.params.id}).lean().then((categoria)=>{
+        res.render('admin/editcategorias', {categoria: categoria})
+    }).catch((err)=>{
+        req.flash("error_msg", "EOQ MALUCO")
+        res.redirect('/admin/categorias')
+    })
+})
+
+router.post('/categorias/edit', (req,res)=>{
+    Categoria.findOne({_id: req.body.id}).then((categoria)=>{
+        categoria.nome = req.body.nome
+        categoria.slug = req.body.slug
+
+        categoria.save().then(()=>{
+            res.redirect('/admin/categorias')
+        }).catch((err)=>{
+            req.flash('error_msg', `erro ao modificar dados ${err}`)
+            res.redirect('/admin/categorias')
+        })
+    }).catch((err)=>{
+        req.flash('error_msg', `${err}`)
+        res.redirect('/admin/categorias')
+    })
 })
 
 module.exports = router

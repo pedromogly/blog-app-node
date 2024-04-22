@@ -23,7 +23,7 @@ const flash = require('connect-flash')
             res.locals.error_msg = req.flash('error_msg')
             next()
         })
-
+        
     app.use(bodyParser.urlencoded({extended: true}))
     app.use(bodyParser.json())
 

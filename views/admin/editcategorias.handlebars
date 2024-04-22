@@ -1,0 +1,14 @@
+<div class="mx-8">
+    <br/>
+    <form action="/admin/categorias/edit" method="POST" class="flex flex-col">
+    <input type="hidden" name="id" value="{{categoria._id}}">
+        <label for="nome">Nome: </label>
+        <input type="text" id="nome" name='nome' placeholder="Nome da categoria" value='{{categoria.nome}}'>
+        <label for="slug">Slug: </label>
+        <input type="text" id="slug" name="slug" placeholder="Slug da categoria" value='{{categoria.slug}}'>
+        <br/>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar categoria</button>
+    </form>
+    <br/>
+    <a href="/admin/categorias"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Voltar</button></a>
+</div>
